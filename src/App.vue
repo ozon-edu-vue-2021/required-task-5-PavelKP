@@ -20,6 +20,7 @@ export default {
   --woocommerce: #a46497;
   --menu: #27b6d4;
 	--active: #a00;
+	--border: #e1e1e1;
   --wc-green: #7ad03a;
   --hover: #dd1f26;
   --wc-orange: #ffba00;
