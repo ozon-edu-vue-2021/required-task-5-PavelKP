@@ -5,7 +5,7 @@
       :key="product.id"
       :product="product"
       :price="getPrice()"
-			:imageSource="getImageSource('6123150777.webp')"
+      :imageSource="getImageSource(product.image)"
       @button-click="addToCart"
     />
   </div>
@@ -35,7 +35,7 @@ export default {
     getPrice() {
       return getRandomPositiveInteger(100, 800);
     },
-		getImageSource(imageName) {
+    getImageSource(imageName) {
       return require(`@/assets/images/${imageName}`);
     },
   },
