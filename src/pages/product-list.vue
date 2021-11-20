@@ -1,19 +1,23 @@
 <template>
-  <div class="page-wrapper">
+  <div v-if="!this.isLoading" class="container">
     <item-card
       v-for="product in productList"
       :key="product.id"
       :product="product"
+      :price="getPrice()"
+			:imageSource="getImageSource('6123150777.webp')"
       @button-click="addToCart"
     />
+  </div>
+  <div v-else class="container">
+    <item-card v-for="index in 12" :key="index" :skeleton="true" />
   </div>
 </template>
 
 <script>
 import itemCard from "../components/item-card.vue";
+import { getRandomPositiveInteger } from "../utils";
 import { mapState } from "vuex";
-
-// https://random-data-api.com/api/food/random_food?size=30
 
 export default {
   name: "App",
@@ -21,21 +25,26 @@ export default {
     "item-card": itemCard,
   },
   computed: {
-    ...mapState(["productList"]),
+    ...mapState("products", ["productList"]),
+    ...mapState("products", ["isLoading"]),
   },
   methods: {
     addToCart(product) {
-      this.$store.commit("addToCart", product);
+      this.$store.commit("cart/addToCart", product);
     },
+    getPrice() {
+      return getRandomPositiveInteger(100, 800);
+    },
+		getImageSource(imageName) {
+      return require(`@/assets/images/${imageName}`);
+    },
+  },
+  created() {
+    this.$store.commit("products/resetProductList");
+    this.$store.dispatch("products/getProductList");
   },
 };
 </script>
 
 <style scoped>
-.page-wrapper {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, 260px);
-  grid-gap: 5px;
-  padding-top: 20px;
-}
 </style>

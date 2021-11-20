@@ -28,6 +28,7 @@ export default {
   top: 0px;
   left: 0px;
   background-color: var(--menu);
+	z-index: 100;
 }
 
 .nav__wrapper {

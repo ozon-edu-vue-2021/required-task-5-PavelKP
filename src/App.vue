@@ -1,7 +1,9 @@
 <template>
   <div id="app">
     <navigation />
-    <router-view />
+    <div class="app__page-wrapper">
+      <router-view />
+    </div>
   </div>
 </template>
 
@@ -19,8 +21,8 @@ export default {
 :root {
   --woocommerce: #a46497;
   --menu: #27b6d4;
-	--active: #a00;
-	--border: #e1e1e1;
+  --active: #a00;
+  --border: #e1e1e1;
   --wc-green: #7ad03a;
   --hover: #dd1f26;
   --wc-orange: #ffba00;
@@ -43,6 +45,17 @@ export default {
   padding-top: 50px;
   box-sizing: border-box;
   height: 100%;
+}
+
+.app__page-wrapper > .container {
+  display: grid;
+	justify-content: center;
+  max-width: 1064px;
+  margin: 0 auto;
+  grid-template-columns: repeat(auto-fill, 260px);
+  grid-gap: 5px;
+  padding-top: 20px;
+  padding-bottom: 80px;
 }
 
 html,
