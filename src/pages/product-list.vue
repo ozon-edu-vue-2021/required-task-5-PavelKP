@@ -40,8 +40,9 @@ export default {
     },
   },
   created() {
-    this.$store.commit("products/resetProductList");
-    this.$store.dispatch("products/getProductList");
+    if (!this.productList.length) {
+      this.$store.dispatch("products/getProductList");
+    }
   },
 };
 </script>
