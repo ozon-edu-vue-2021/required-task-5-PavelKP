@@ -13,7 +13,7 @@
 
         <h3>{{ product.dish }}</h3>
         <p class="product__description">{{ product.description }}</p>
-        <span class="product__price">₽ {{ price }}</span>
+        <span class="product__price">₽ {{ product.price }}</span>
       </div>
       <div class="product__actions">
         <div class="product__add-to-cart">

@@ -17,15 +17,18 @@ const FILE_NAMES = [
 
 const API = "https://random-data-api.com/api/food/random_food?size=30";
 
+const setMockData = (product) => {
+  product.image = FILE_NAMES[getRandomPositiveInteger(0, FILE_NAMES.length - 1)];
+  product.price = getRandomPositiveInteger(100, 800);
+};
+
 export const fetchProductList = async () => {
   try {
     const rawData = await fetch(API);
 
     if (rawData.ok) {
       const data = await rawData.json();
-      data.forEach(
-        (product) => product.image = FILE_NAMES[getRandomPositiveInteger(0, FILE_NAMES.length - 1)]
-      );
+      data.forEach(setMockData);
       return data;
     }
   } catch (err) {

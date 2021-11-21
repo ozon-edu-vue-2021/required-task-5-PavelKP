@@ -4,7 +4,6 @@
       v-for="product in productList"
       :key="product.id"
       :product="product"
-      :price="getPrice()"
       :imageSource="getImageSource(product.image)"
       @button-click="addToCart"
     />
@@ -16,7 +15,6 @@
 
 <script>
 import itemCard from "../components/item-card.vue";
-import { getRandomPositiveInteger } from "../utils";
 import { mapState } from "vuex";
 
 export default {
@@ -31,9 +29,6 @@ export default {
   methods: {
     addToCart(product) {
       this.$store.commit("cart/addToCart", product);
-    },
-    getPrice() {
-      return getRandomPositiveInteger(100, 800);
     },
     getImageSource(imageName) {
       return require(`@/assets/images/${imageName}`);

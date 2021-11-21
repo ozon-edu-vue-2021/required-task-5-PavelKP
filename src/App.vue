@@ -49,7 +49,7 @@ export default {
 
 .app__page-wrapper > .container {
   display: grid;
-	justify-content: center;
+  justify-content: center;
   max-width: 1064px;
   margin: 0 auto;
   grid-template-columns: repeat(auto-fill, 260px);
