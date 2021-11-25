@@ -4,20 +4,30 @@
     <div class="app__page-wrapper">
       <router-view />
     </div>
+    <div class="popup-global">
+      <popup-wrapper />
+    </div>
   </div>
 </template>
 
 <script>
 import navigation from "./components/navigation.vue";
+import popupWrapper from "./components/popup-wrapper.vue";
+
 export default {
   name: "App",
   components: {
     navigation,
+    "popup-wrapper": popupWrapper,
   },
 };
 </script>
 
 <style>
+* {
+  box-sizing: border-box;
+}
+
 :root {
   --woocommerce: #a46497;
   --menu: #27b6d4;
@@ -65,7 +75,11 @@ body {
   height: 100%;
 }
 
-* {
-  box-sizing: border-box;
+.popup-global {
+  margin: 0 auto;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  overflow: hidden;
 }
 </style>
